@@ -46,6 +46,8 @@ services:
     restart: always
     environment:
       DATABASE_URL: postgres://appflowy:supersecret@postgres:5432/appflowy?sslmode_
+      volumes:
+  appflowy_pg_data: {}
 
 
 
