@@ -60,6 +60,7 @@ services:
       - appflowy_cloud
 
 volumes:
-  appflowy_pg_data
+  appflowy_pg_data: {}
+
 
 
