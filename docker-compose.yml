@@ -1,9 +1,6 @@
-version: "3.8"
-
 services:
   postgres:
     image: postgres:14
-    container_name: appflowy_postgres
     restart: always
     environment:
       POSTGRES_DB: appflowy
@@ -14,12 +11,10 @@ services:
 
   redis:
     image: redis:alpine
-    container_name: appflowy_redis
     restart: always
 
   gotrue:
     image: appflowyinc/gotrue:latest
-    container_name: appflowy_auth
     restart: always
     ports:
       - "9999:9999"
@@ -36,7 +31,6 @@ services:
 
   appflowy_cloud:
     image: appflowyinc/appflowy_cloud:latest
-    container_name: appflowy_cloud
     restart: always
     environment:
       DATABASE_URL: postgres://appflowy:supersecret@postgres:5432/appflowy?sslmode=disable
@@ -49,7 +43,6 @@ services:
 
   appflowy_worker:
     image: appflowyinc/appflowy_worker:latest
-    container_name: appflowy_worker
     restart: always
     environment:
       DATABASE_URL: postgres://appflowy:supersecret@postgres:5432/appflowy?sslmode=disable
@@ -60,7 +53,6 @@ services:
 
   appflowy_web:
     image: appflowyinc/appflowy_web:latest
-    container_name: appflowy_web
     ports:
       - "8080:80"
     restart: always
@@ -69,3 +61,4 @@ services:
 
 volumes:
   appflowy_pg_data:
+
