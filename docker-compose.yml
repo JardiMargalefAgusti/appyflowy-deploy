@@ -19,7 +19,7 @@ services:
     ports:
       - "9191:9999"
     environment:
-      GOTRUE_SITE_URL: http://localhost:8181
+      GOTRUE_SITE_URL: https://appyflow.apogea.pro
       GOTRUE_API_HOST: 0.0.0.0
       GOTRUE_API_PORT: 9999
       GOTRUE_DB_DRIVER: postgres
@@ -45,22 +45,7 @@ services:
     image: appflowyinc/appflowy_worker:latest
     restart: always
     environment:
-      DATABASE_URL: postgres://appflowy:supersecret@postgres:5432/appflowy?sslmode=disable
-      REDIS_URL: redis://redis:6379
-    depends_on:
-      - redis
-      - postgres
-
-  appflowy_web:
-    image: appflowyinc/appflowy_web:latest
-    ports:
-      - "8181:80"
-    restart: always
-    depends_on:
-      - appflowy_cloud
-
-volumes:
-  appflowy_pg_data: {}
+      DATABASE_URL: postgres://appflowy:supersecret@postgres:5432/appflowy?sslmode_
 
 
 
